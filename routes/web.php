@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/page', function(){
+	echo '<pre>';
+	//print_r(env('NEW_PARAM'));
+	//echo config('app.locale');
+	echo Config::get('app.locale');
+
+	echo '</pre>';
+
+});
