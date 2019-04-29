@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class TestController extends Controller
 {
     //
+    public function show(){
+    	echo __METHOD__;
+    }
 }
