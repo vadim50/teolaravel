@@ -1,4 +1,53 @@
    <div class="col-md-9">
+
+@if(count($data) < 3)
+  Hello hello < 3
+
+@elseif(count($data) > 10)
+  Вмассиве больше 10 элементов
+@else
+  Вмассиве  неизвестное кол. элементов
+@endif
+
+<ul>
+  @for($i=0;$i< count($dataI);$i++)
+
+  <li>{{ $dataI[$i] }}</li>
+
+  @endfor
+</ul>
+
+<ul>
+  @foreach($data as $k=>$v)
+
+  <li>{{ $k.'=>'.$v }}</li>
+
+  @endforeach
+</ul>
+
+<ul>
+  @forelse($data as $k=>$v)
+  <li>{{ $k.'=>'.$v }}</li>
+  @empty
+  <p>No items</p>
+  @endforelse
+</ul>
+
+@while(false)
+  <p>Forever</p>
+@endwhile
+
+@each('default.list',$dataI,'value')
+
+@myDir('Hello')
+
+
+<h1>{{ date('d.M.Y',time())}}</h1>
+
+
+
+
+
         <div class="row">
       <div class="col-md-6">
         <h2>Heading</h2>

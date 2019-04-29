@@ -45,8 +45,8 @@ class IndexController extends Controller
 
     			],
     			'dataI'=>['List 1','list 2','list 3','list 4','list 5'],
-    			'bvar'=>true,
-    			'script'=>"<script>alert('Hello</script>"
+    			'bvar'=>'',
+    			'script'=>"<script>alert('Hello)</script>"
 
     		];
 
