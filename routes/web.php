@@ -71,18 +71,23 @@
 // });
 
 
-Route::get('/',['as'=>'home','uses'=>'Admin\IndexController@show']);
 
-Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
 
 //Route::get('/fan','Dir\TestController@show');
 
 
-Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
-Route::get('/article/{id}',['uses'=>'Admin\Core@getArticle','as'=>'article']);
+
 
 //list pages ['only'=>['index','show']] ['except'=>['index','show']]
 // Route::get('pages/add','Admin\CoreResource@add');
 // Route::resource('/pages','Admin\CoreResource');
 
 // Route::get('/pages','PagesController@getIndex');
+Route::get('/',['as'=>'home','uses'=>'Admin\IndexController@show']);
+
+Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
+
+Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
+Route::get('/article/{id}',['uses'=>'Admin\Core@getArticle','as'=>'article']);
+
+Route::match(['get','post'],'/contact/{name?}',['uses'=>'Admin\ContactController@show','as'=>'contact']);
