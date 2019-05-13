@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\User;
+use App\City;
+use App\Role;
 
 
 class Core extends Controller
@@ -204,18 +207,94 @@ class Core extends Controller
 
         //delete forse
 
-        $article = Article::find(15);
+        //$article = Article::find(15);
 
-        $article->forceDelete();
+        //$article->forceDelete();
+        //$user = User::find(1);
+        //dump($user->city);
+        // $city = City::find(1);
+        // dump($city->user);
+
+        //$articles = Article::all();
+        //$articles = $user->articles;
+
+        // foreach($articles as $article){
+        //     echo $article->name.'<br>';
+        // }
+
+        //$articles = $user->articles()->where('id',10)->first();
+        //$articles = $user->articles()->where('id','>',10)->get();
+        //$article = Article::find(10);
 
 
-        $articles = Article::all();
+        //dump($article->user()->where('id',1)->first());
+        //dump($article->user->name);
+        //dump($article);
+
+        //$user = User::find(1);
+
+        // foreach($user->roles as $role){
+        //     echo $role->name.'<br>';
+        // }
 
 
+        //dump($user->roles);
+        //$role = $user->roles()->where('roles.id',2)->first();
+        //$role = Role::find(1);
 
+        //dump($role->users);
+
+        //$articles = Article::all();
+
+        //$articles = Article::with('user')->get();
+        //$articles->load('user');
+        //$users = User::all();
+
+        // foreach($articles as $article){
+        //     echo $article->user->name;
+        // }
+        //$users = User::with('articles','roles')->get();
+        // $users = User::has('articles','>=',5)->get();
+        // foreach($users as $user){
+            //dump($user->articles);
+
+            //dump($user->roles);
+
+            //dump($user);
+            $user = User::find(2);
+
+            // $article = new Article([
+
+            //     'name'=>'New New Article',
+            //     'text'=>'Some Text!',
+            //     'img'=>'new.jpg'
+            // ]);
+
+            //$user->articles()->save($article);
+            // $user->articles()->create([
+
+            //     'name'=>'New New Article III',
+            //     'text'=>'Some Text III!',
+            //     'img'=>'new1.jpg'
+
+            // ]);
+            // $user->articles()->saveMany([
+
+            //     new Article(['name'=>'Many articles 1','text'=>'text','img'=>'img.jpg']),
+            //     new Article(['name'=>'Many articles 2','text'=>'text','img'=>'img.jpg']),
+            //     new Article(['name'=>'Many articles 3','text'=>'text','img'=>'img.jpg'])
+
+            // ]);
+
+            //$role = new Role(['name'=>'quest']);
+
+            //$user->roles()->save($role);
+            $user->articles()->where('id','=',19)->update(['name'=>'New Update333']);
+
+            $articles = Article::find(19);
 
         dump($articles);
-        //dump($article);
+        //dump($user->roles);
     }
 
     public function getArticle($id){
