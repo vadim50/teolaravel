@@ -261,7 +261,7 @@ class Core extends Controller
             //dump($user->roles);
 
             //dump($user);
-            $user = User::find(2);
+            //$user = User::find(2);
 
             // $article = new Article([
 
@@ -289,12 +289,54 @@ class Core extends Controller
             //$role = new Role(['name'=>'quest']);
 
             //$user->roles()->save($role);
-            $user->articles()->where('id','=',19)->update(['name'=>'New Update333']);
+        //     $user->articles()->where('id','=',19)->update(['name'=>'New Update333']);
 
-            $articles = Article::find(19);
+        //     $articles = Article::find(19);
 
-        dump($articles);
+        // dump($articles);
         //dump($user->roles);
+        // $city = City::find(1);
+        // $user = User::find(2);
+
+        // $city->user()->associate($user);
+        // $city->save();
+
+        // $articles = Article::all();
+        // $user = User::find(2);
+
+        // foreach($articles as $article){
+
+        //     $article->user()->associate($user);
+        //     $article->save();
+        // }
+// $user = User::find(2);
+// $role_id = Role::find(2)->id;
+
+// $user->roles()->attach($role_id);
+//$user->roles()->detach($role_id);
+
+//$article = Article::find(19);
+
+//dump($article);
+
+//$article->name = 'Some T';
+
+$article = Article::find(19);
+// $arr = ['key'=>'Hello'];
+// $article->text = $arr;
+
+// $article->save();
+
+//echo $article->name;
+//dump($article->text);
+dump($article->toArray());
+dump($article->toJson());
+dump((string)$article);
+
+
+
+
+
     }
 
     public function getArticle($id){
