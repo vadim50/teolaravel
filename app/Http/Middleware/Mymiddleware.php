@@ -15,9 +15,9 @@ class Mymiddleware
      */
     public function handle($request, Closure $next, $param)
     {
-        if($request->route('page') != 'pages' && $param == 'admin'){
-            return redirect()->route('home');
-        }
+        // if($request->route('page') != 'pages' && $param == 'admin'){
+        //     return redirect()->route('home');
+        // }
 
         
         return $next($request);

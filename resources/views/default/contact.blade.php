@@ -18,7 +18,18 @@
 			This is a template a simple marketing or information website.
 			It includes a large...
 		</p>
-		<form method="post" action="{{ route('contact',['name'=>'Hello']) }}">
+
+@if(count($errors) > 0))
+	<div class="alert alert-danger">
+		<ul>
+			@foreach($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+@endif
+
+		<form method="post" action="{{ route('contact') }}">
 			@csrf
 			<div class="form-group">
 				<label for="name">Name:</label>
