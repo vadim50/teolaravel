@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -13,7 +14,7 @@ class ContactController extends Controller
     // public function __construct(Request $request){
     // 	$this->request = $request;
     // }
-    public function show(Request $request, $id=false){
+    public function store(Request $request, $id=false){
     	//print_r($request->all());
     	//$array = $request->only('site','text');
     	// $array = $request->except('site','text');
@@ -69,8 +70,58 @@ class ContactController extends Controller
             //$this->validate($request,$rules);
 
             //dump($request->all());
+
+            $messages = [
+
+                'name.required' => 'ПОЛЕ-- :attribute обязательно к заполнению!',
+            'email.max'=> 'Максмальная-- длина поля :attribute :max символов!',
+            'site.required'=>'ПОЛЕ-- :attribute обязательно к заполнению!',
+
+
+            ];
+
+            $validator = Validator::make($request->all(),[
+
+                'name'=>'required',
+                //'email'=>'sometimes|required',//если есть такое поле
+                //'email'=>'required'
+
+            ],$messages);
+
+            $validator->sometimes(['email','site'],'required',function($input){
+                //dd($input);
+                return strlen($input->name) >= 10;
+            });
+
+            // $validator->after(function($validator){
+            //     $validator->errors()->add('name','Доп');
+            // });
+
+            if($validator->fails()){
+                //return redirect()->route('contact')->withErrors($validator)->withInput();
+                $messages = $validator->errors();
+                //dump($messages->all());
+                //dump($messages->first('name'));
+                // if($messages->has('email')){
+                //     //dump($messages->get('email'));
+                //     //dump($messages->all('<p> :message </p>'));
+                //     dump($messages->first('name','<p> :message </p>'));
+                // }
+                dd($validator->failed());
+
+                return redirect()->route('contact')->withErrors($validator)->withInput();
+                
+            }
+
+
         }
 
+        //$this->validate($request,$rules,$messages);
+
     	return view('default.contact')->withTitle('Contacts');
+    }
+
+    public function show(){
+        return view('default.contact')->withTitle('Contacts');
     }
 }

@@ -90,4 +90,5 @@ Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
 Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
 Route::get('/article/{id}',['uses'=>'Admin\Core@getArticle','as'=>'article']);
 
-Route::match(['get','post'],'/contact/{name?}',['uses'=>'Admin\ContactController@show','as'=>'contact']);
+Route::get('/contact',['uses'=>'Admin\ContactController@show','as'=>'contact']);
+Route::post('/contact',['uses'=>'Admin\ContactController@store']);

@@ -128,8 +128,12 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Поле :attribute обязательно к заполнению!',
+        ],
+        'email'=>[
+            'max'=> 'Максмальная длина поля :attribute :max символов!',
+            'required'=>'Поле :attribute обязательно к заполнению!',
         ],
     ],
 
