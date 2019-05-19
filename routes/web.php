@@ -90,9 +90,17 @@ Route::get('/about',['uses'=>'Admin\AboutController@show','as'=>'about']);
 Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
 Route::get('/article/{id}',['uses'=>'Admin\Core@getArticle','as'=>'article']);
 
-Route::get('/contact',['middleware'=>['auth'],'uses'=>'Admin\ContactController@show','as'=>'contact']);
+Route::get('/contact',['uses'=>'Admin\ContactController@show','as'=>'contact']);
 Route::post('/contact',['uses'=>'Admin\ContactController@store']);
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+//================================================= Custom Auth ====
+//  admin
+Auth::routes();
+Route::group(['prefix'=>'admin','middleware'=>['web','auth']],function(){
+	Route::get('/',['uses'=>'Admin\AdminController@show','as'=>'admin_index']);
+	Route::get('/add/post',['uses'=>'Admin\AdminPostController@create','as'=>'admin_add_post']);
+});
